@@ -1,34 +1,24 @@
-# GitHub Pages設定
-url: "https://utakingdom.ksth.dev"
-baseurl: ""
-
 plugins:
   - jekyll-redirect-from
 
-# ファイル除外設定
-exclude:
-  - README.md
-  - android/
-  - ios/
-  - node_modules/
-  - package.json
-  - package-lock.json
-  - metro.config.js
-  - babel.config.js
-  - app.json
-  - eas.json
-  - _redirects
-
-# MIME type設定
-include:
-  - .well-known
-
-# 404ページ設定
+# GitHub Pages settings
 permalink: pretty
 
-# カスタム404ページを有効化
-plugins:
-  - jekyll-redirect-from
+# Enable directory indexes
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
 
-# GitHub Pagesで動的ルーティングを模擬
-collections_dir: ""
+# Include auth directory
+include:
+  - auth
+  - auth/callback
+
+# Exclude unnecessary files
+exclude:
+  - README.md
+  - node_modules
+  - package.json
+  - package-lock.json
