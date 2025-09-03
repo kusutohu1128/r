@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>認証中 - 歌王国</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+        .spinner {
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .status {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .error {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ffcccb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎵</div>
+        <h1>歌王国</h1>
+        
+        <div class="status" id="status">
+            <div class="spinner">⏳</div>
+            <p>認証を処理中...</p>
+        </div>
+    </div>
+
+    <script>
+        function handleOAuthCallback() {
+            try {
+                console.log('OAuth callback page loaded');
+                console.log('Current URL:', window.location.href);
+                
+                // URLからパラメータを取得
+                const urlParams = new URLSearchParams(window.location.search);
+                const hash = window.location.hash;
+                
+                console.log('URL params:', Object.fromEntries(urlParams));
+                console.log('Hash:', hash);
+                
+                // 認証コード取得
+                const code = urlParams.get('code');
+                const state = urlParams.get('state');
+                const error = urlParams.get('error');
+                
+                if (error) {
+                    console.error('OAuth error:', error);
+                    document.getElementById('status').innerHTML = 
+                        '<div class="error"><p>認証エラーが発生しました</p></div>';
+                    return;
+                }
+                
+                if (code) {
+                    console.log('OAuth code received:', code);
+                    console.log('State:', state);
+                    
+                    // アプリにディープリンクで認証情報を渡す
+                    const deepLink = `utakingdom://auth/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state || '')}`;
+                    
+                    console.log('Opening app with deep link:', deepLink);
+                    
+                    // ディープリンクでアプリを開く
+                    window.location.href = deepLink;
+                    
+                    // 少し待ってからストアページに移動（アプリがインストールされていない場合）
+                    setTimeout(() => {
+                        document.getElementById('status').innerHTML = 
+                            '<p>アプリが見つかりません</p><p><a href="https://play.google.com/store/apps/details?id=com.kusutohu.UtaKingdom" style="color: white;">Google Playでダウンロード</a></p>';
+                    }, 3000);
+                    
+                } else {
+                    console.error('No OAuth code found in URL');
+                    document.getElementById('status').innerHTML = 
+                        '<div class="error"><p>認証コードが見つかりません</p></div>';
+                }
+                
+            } catch (error) {
+                console.error('Error handling OAuth callback:', error);
+                document.getElementById('status').innerHTML = 
+                    '<div class="error"><p>認証処理中にエラーが発生しました</p></div>';
+            }
+        }
+
+        // ページ読み込み完了後に実行
+        window.addEventListener('load', handleOAuthCallback);
+    </script>
+</body>
+</html>
