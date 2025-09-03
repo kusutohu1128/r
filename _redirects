@@ -1,0 +1,7 @@
+# Netlify リダイレクト設定
+# ルーム、ユーザー、その他の動的パスをindex.htmlにリダイレクト
+/room/*    /index.html   200
+/user/*    /index.html   200
+
+# その他のパスもindex.htmlで処理
+/*         /index.html   200

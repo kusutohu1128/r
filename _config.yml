@@ -1,0 +1,27 @@
+# GitHub Pages設定
+url: "https://kusutohu1128.github.io"
+baseurl: "/Utakingdom"
+
+# カスタムドメイン設定（後で使用）
+# url: "https://utakingdom.ksth.dev"
+# baseurl: ""
+
+plugins:
+  - jekyll-redirect-from
+
+# ファイル除外設定
+exclude:
+  - README.md
+  - android/
+  - ios/
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - metro.config.js
+  - babel.config.js
+  - app.json
+  - eas.json
+
+# MIME type設定
+include:
+  - .well-known

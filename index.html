@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歌王国 - 音楽コミュニティアプリ</title>
+    <meta name="description" content="みんなで歌って楽しむ音楽コミュニティアプリ。お気に入りの楽曲でコラボレーション録音を楽しもう！">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        h1 {
+            font-size: 28px;
+            margin: 20px 0 10px;
+        }
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        .status {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .download-btn {
+            background: #4DB6F6;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #3a9fd9;
+        }
+        .countdown {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎵</div>
+        <h1>歌王国</h1>
+        <p class="subtitle">みんなで歌って楽しむ音楽コミュニティ</p>
+        
+        <div class="status" id="status">
+            <p>アプリを開いています...</p>
+            <div class="countdown" id="countdown"></div>
+        </div>
+        
+        <a href="https://play.google.com/store/apps/details?id=com.kusutohu.UtaKingdom" class="download-btn" id="download-btn">
+            Google Playでダウンロード
+        </a>
+    </div>
+
+    <script>
+        function attemptAppLaunch() {
+            const path = window.location.pathname;
+            const customScheme = `utakingdom:/${path}`;
+            
+            console.log('Attempting to open app with:', customScheme);
+            
+            // アプリを起動試行
+            window.location.href = customScheme;
+            
+            // カウントダウン表示
+            let countdown = 3;
+            const countdownElement = document.getElementById('countdown');
+            const statusElement = document.getElementById('status');
+            
+            const timer = setInterval(() => {
+                if (countdown > 0) {
+                    countdownElement.textContent = `${countdown}秒後にGoogle Playに移動します...`;
+                    countdown--;
+                } else {
+                    clearInterval(timer);
+                    statusElement.innerHTML = '<p>アプリが見つかりません</p>';
+                    // Google Play Storeにリダイレクト
+                    window.location.href = "https://play.google.com/store/apps/details?id=com.kusutohu.UtaKingdom";
+                }
+            }, 1000);
+            
+            // ページの可視性が変わった場合（アプリが開いた場合）はタイマーを停止
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    clearInterval(timer);
+                }
+            });
+        }
+
+        // ページ読み込み完了後に実行
+        window.addEventListener('load', function() {
+            // ルートページの場合はアプリ起動を試行しない
+            if (window.location.pathname === '/') {
+                document.getElementById('status').innerHTML = '<p>歌王国アプリをダウンロードして始めよう！</p>';
+                return;
+            }
+            
+            // 少し遅延してからアプリ起動を試行
+            setTimeout(attemptAppLaunch, 500);
+        });
+    </script>
+</body>
+</html>
