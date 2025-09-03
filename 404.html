@@ -95,23 +95,17 @@ layout: none
         function attemptAppLaunch() {
             const path = window.location.pathname;
             
-            // GitHub PagesのベースURL（/Utakingdom）を除去
-            let cleanPath = path;
-            if (cleanPath.startsWith('/Utakingdom')) {
-                cleanPath = cleanPath.substring('/Utakingdom'.length);
-            }
+            console.log('Current pathname:', path);
             
-            // 空の場合は/にする
-            if (!cleanPath || cleanPath === '/') {
+            // ルートパスの場合はアプリ起動を試行しない
+            if (path === '/' || path === '/404.html') {
                 document.getElementById('status').innerHTML = '<p>歌王国アプリをダウンロードして始めよう！</p>';
                 return;
             }
             
             // カスタムスキームを生成（先頭の/を除去）
-            const customScheme = `utakingdom://${cleanPath.startsWith('/') ? cleanPath.substring(1) : cleanPath}`;
+            const customScheme = `utakingdom:/${path.startsWith('/') ? path.substring(1) : path}`;
             
-            console.log('Original path:', path);
-            console.log('Clean path:', cleanPath);
             console.log('Attempting to open app with:', customScheme);
             
             // アプリを起動試行
@@ -144,8 +138,10 @@ layout: none
 
         // ページ読み込み完了後に実行
         window.addEventListener('load', function() {
+            console.log('Page loaded, pathname:', window.location.pathname);
+            
             // ルートページの場合はアプリ起動を試行しない
-            if (window.location.pathname === '/' || window.location.pathname === '/Utakingdom/' || window.location.pathname === '/404.html') {
+            if (window.location.pathname === '/' || window.location.pathname === '/404.html') {
                 document.getElementById('status').innerHTML = '<p>歌王国アプリをダウンロードして始めよう！</p>';
                 return;
             }

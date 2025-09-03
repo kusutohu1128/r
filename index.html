@@ -90,7 +90,16 @@
     <script>
         function attemptAppLaunch() {
             const path = window.location.pathname;
-            const customScheme = `utakingdom:/${path}`;
+            console.log('Current pathname:', path);
+            
+            // ルートパスの場合はアプリ起動を試行しない
+            if (path === '/' || path === '/index.html') {
+                document.getElementById('status').innerHTML = '<p>歌王国アプリをダウンロードして始めよう！</p>';
+                return;
+            }
+            
+            // カスタムスキームを生成
+            const customScheme = `utakingdom:/${path.startsWith('/') ? path.substring(1) : path}`;
             
             console.log('Attempting to open app with:', customScheme);
             
