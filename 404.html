@@ -94,8 +94,24 @@ layout: none
     <script>
         function attemptAppLaunch() {
             const path = window.location.pathname;
-            const customScheme = `utakingdom:${path}`;
             
+            // GitHub PagesのベースURL（/Utakingdom）を除去
+            let cleanPath = path;
+            if (cleanPath.startsWith('/Utakingdom')) {
+                cleanPath = cleanPath.substring('/Utakingdom'.length);
+            }
+            
+            // 空の場合は/にする
+            if (!cleanPath || cleanPath === '/') {
+                document.getElementById('status').innerHTML = '<p>歌王国アプリをダウンロードして始めよう！</p>';
+                return;
+            }
+            
+            // カスタムスキームを生成（先頭の/を除去）
+            const customScheme = `utakingdom://${cleanPath.startsWith('/') ? cleanPath.substring(1) : cleanPath}`;
+            
+            console.log('Original path:', path);
+            console.log('Clean path:', cleanPath);
             console.log('Attempting to open app with:', customScheme);
             
             // アプリを起動試行
