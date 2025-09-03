@@ -1,10 +1,6 @@
 # GitHub Pages設定
-url: "https://kusutohu1128.github.io"
-baseurl: "/Utakingdom"
-
-# カスタムドメイン設定（後で使用）
-# url: "https://utakingdom.ksth.dev"
-# baseurl: ""
+url: "https://utakingdom.ksth.dev"
+baseurl: ""
 
 plugins:
   - jekyll-redirect-from
@@ -21,7 +17,18 @@ exclude:
   - babel.config.js
   - app.json
   - eas.json
+  - _redirects
 
 # MIME type設定
 include:
   - .well-known
+
+# 404ページ設定
+permalink: pretty
+
+# カスタム404ページを有効化
+plugins:
+  - jekyll-redirect-from
+
+# GitHub Pagesで動的ルーティングを模擬
+collections_dir: ""
