@@ -1,0 +1,8 @@
+# OAuth callback routing
+RewriteEngine On
+
+# Redirect /auth/callback to /auth/callback/index.html
+RewriteRule ^auth/callback/?$ /auth/callback/index.html [L,R=301]
+
+# Alternative routing for different OAuth providers
+RewriteRule ^oauth/google/?$ /auth/callback/index.html [L,R=301]
