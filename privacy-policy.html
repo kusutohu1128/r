@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プライバシーポリシー - 歌王国</title>
+    <meta name="description" content="歌王国のプライバシーポリシーページ。個人情報の取り扱いについて詳しく説明しています。">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #F2F2F7;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #fff;
+            border-bottom: 1px solid #E5E5EA;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .back-button {
+            padding: 8px;
+            margin-left: -8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #007AFF;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            opacity: 0.7;
+        }
+        
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+        
+        .placeholder {
+            width: 40px;
+        }
+        
+        .content {
+            flex: 1;
+            background: #F2F2F7;
+            overflow-y: auto;
+        }
+        
+        .section {
+            background: #fff;
+            margin: 16px 16px 0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .last-section {
+            margin-bottom: 32px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 24px;
+        }
+        
+        .section-text {
+            font-size: 16px;
+            color: #666;
+            line-height: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .bullet-text {
+            font-size: 16px;
+            color: #666;
+            line-height: 24px;
+            margin-bottom: 4px;
+            margin-left: 16px;
+        }
+        
+        .update-date {
+            font-size: 14px;
+            color: #999;
+            text-align: center;
+            font-style: italic;
+            line-height: 20px;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .header {
+                padding: 8px 12px;
+            }
+            
+            .section {
+                margin: 12px;
+                padding: 16px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+            }
+            
+            .section-text, .bullet-text {
+                font-size: 14px;
+            }
+        }
+        
+        /* Back arrow icon using CSS */
+        .back-arrow {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-right: 8px solid #007AFF;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="javascript:history.back()" class="back-button" onclick="handleBack()">
+            <span class="back-arrow"></span>
+        </a>
+        <div class="header-title">プライバシーポリシー</div>
+        <div class="placeholder"></div>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <div class="section-title">個人情報の収集について</div>
+            <div class="section-text">
+                歌王国（以下「当サービス」といいます。）は、以下の場合に個人情報を収集することがあります。
+            </div>
+            <div class="bullet-text">
+                • アカウント登録時（メールアドレス、ユーザー名等）
+            </div>
+            <div class="bullet-text">
+                • Google OAuth認証時（プロフィール情報、メールアドレス）
+            </div>
+            <div class="bullet-text">
+                • アプリ利用時のログ情報
+            </div>
+            <div class="bullet-text">
+                • お問い合わせ時の連絡先情報
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">個人情報の利用目的</div>
+            <div class="section-text">
+                収集した個人情報は、以下の目的で利用いたします。
+            </div>
+            <div class="bullet-text">
+                • 本サービスの提供・運営のため
+            </div>
+            <div class="bullet-text">
+                • ユーザーサポート・お問い合わせ対応のため
+            </div>
+            <div class="bullet-text">
+                • サービス改善・新機能開発のため
+            </div>
+            <div class="bullet-text">
+                • 利用規約違反の調査・対応のため
+            </div>
+            <div class="bullet-text">
+                • メンテナンス・重要なお知らせの配信のため
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">個人情報の第三者提供</div>
+            <div class="section-text">
+                当サービスは、以下の場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。
+            </div>
+            <div class="bullet-text">
+                • 法令に基づく場合
+            </div>
+            <div class="bullet-text">
+                • 人の生命、身体または財産の保護のために必要がある場合
+            </div>
+            <div class="bullet-text">
+                • 公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合
+            </div>
+            <div class="bullet-text">
+                • 国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">個人情報の開示</div>
+            <div class="section-text">
+                当サービスは、本人から個人情報の開示を求められたときは、本人に対し、遅滞なくこれを開示します。ただし、開示することにより次のいずれかに該当する場合は、その全部または一部を開示しないこともあり、開示しない決定をした場合には、その旨を遅滞なく通知します。
+            </div>
+            <div class="bullet-text">
+                • 本人または第三者の生命、身体、財産その他の権利利益を害するおそれがある場合
+            </div>
+            <div class="bullet-text">
+                • 当サービスの業務の適正な実施に著しい支障を及ぼすおそれがある場合
+            </div>
+            <div class="bullet-text">
+                • その他法令に違反することとなる場合
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">個人情報の訂正および削除</div>
+            <div class="section-text">
+                ユーザーは、当サービスの保有する自己の個人情報が誤った情報である場合には、当サービスが定める手続きにより、当サービスに対して個人情報の訂正、追加または削除（以下「訂正等」といいます。）を請求することができます。
+            </div>
+            <div class="section-text">
+                当サービスは、ユーザーから前項の請求を受けてその請求に応じる必要があると判断した場合には、遅滞なく、当該個人情報の訂正等を行うものとします。
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">個人情報の利用停止等</div>
+            <div class="section-text">
+                当サービスは、本人から、個人情報が、利用目的の範囲を超えて取り扱われているという理由、または不正の手段により取得されたものであるという理由により、その利用の停止または消去（以下「利用停止等」といいます。）を求められた場合には、遅滞なく必要な調査を行います。
+            </div>
+            <div class="section-text">
+                前項の調査結果に基づき、その請求に応じる必要があると判断した場合には、遅滞なく、当該個人情報の利用停止等を行います。
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Cookie（クッキー）について</div>
+            <div class="section-text">
+                当サービスは、サービス向上のためCookieを使用することがあります。Cookieの使用を希望されない場合は、ブラウザの設定でCookieを無効にすることができます。ただし、Cookieを無効にした場合、サービスの一部機能がご利用いただけない場合があります。
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">広告について</div>
+            <div class="section-text">
+                当サービスでは、第三者配信の広告サービス（Google AdMob等）を利用しています。このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他のサイトへのアクセスに関する情報（氏名、住所、メールアドレス、電話番号は含まれません）を使用することがあります。
+            </div>
+            <div class="section-text">
+                このプロセスの詳細やこのような情報が広告配信事業者に使用されないようにする方法については、Google の広告およびコンテンツ ネットワークに関するプライバシー ポリシーをご確認ください。
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">アクセス解析ツールについて</div>
+            <div class="section-text">
+                当サービスでは、Googleによるアクセス解析ツール「Google Analytics」を利用しています。このGoogle Analyticsはトラフィックデータの収集のためにCookieを使用しています。このトラフィックデータは匿名で収集されており、個人を特定するものではありません。
+            </div>
+            <div class="section-text">
+                この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">プライバシーポリシーの変更</div>
+            <div class="section-text">
+                当サービスは、必要に応じて、このプライバシーポリシーの内容を変更することがあります。この場合、変更後のプライバシーポリシーの施行時期と内容を適切な方法により周知または通知します。
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">お問い合わせ</div>
+            <div class="section-text">
+                本ポリシーに関するお問い合わせは、下記の連絡先までお願いいたします。
+            </div>
+            <div class="section-text">
+                メール：support@utakingdom.com
+            </div>
+        </div>
+
+        <div class="section last-section">
+            <div class="update-date">
+                制定日：2025年10月1日<br>
+                最終更新日：2025年9月4日
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleBack() {
+            // Try to go back in history, or fallback to homepage
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = '/';
+            }
+        }
+    </script>
+</body>
+</html>
