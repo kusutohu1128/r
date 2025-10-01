@@ -11,10 +11,11 @@ defaults:
     values:
       layout: default
 
-# Include auth directory
+# Include auth directory and .well-known directory
 include:
   - auth
   - auth/callback
+  - .well-known
 
 # Exclude unnecessary files
 exclude:
