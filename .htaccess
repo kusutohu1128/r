@@ -1,6 +1,9 @@
 # OAuth callback routing
 RewriteEngine On
 
+# Exclude .well-known directory from all rewrites (for App Links verification)
+RewriteRule ^\.well-known/ - [L]
+
 # Redirect /auth/callback to /auth/callback/index.html
 RewriteRule ^auth/callback/?$ /auth/callback/index.html [L,R=301]
 
